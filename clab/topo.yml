@@ -10,6 +10,7 @@ topology:
       kind: srl
       image: ghcr.io/nokia/srlinux
       mgmt-ipv4: 192.168.6.2
+      startup-config: srl.partial.cli
     sros:
       kind: vr-sros
       image: vr-sros:22.10.R5

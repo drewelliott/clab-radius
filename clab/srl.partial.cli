@@ -1,0 +1,31 @@
+system {
+    configuration {
+        role administrative {
+            rule / {
+                action write
+            }
+        }
+    }
+    aaa {
+        authentication {
+            authentication-method [
+                radius
+                local
+            ]
+        }
+        authorization {
+            role administrative
+            }
+        server-group radius {
+            type radius
+            server 192.168.6.4 {
+                network-instance mgmt
+                radius {
+                    auth-port 1812
+                    acct-port 1813
+                    secret-key $aes$aOOn6uFJ1F6c=$SjDVELw1FVRsqR//5ATaxQ==
+                }
+            }
+        }
+    }
+}
