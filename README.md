@@ -27,6 +27,8 @@ Now you can start the topology with the following command:
 
 Once the topology is fully booted, you will see the table with the details.
 
+Here are the default users:
+
 | User   | Password | Auth Type |
 | :----- | :------: | :-------- |
 | admin  | admin    | local     |
