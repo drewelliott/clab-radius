@@ -1,0 +1,4 @@
+"drew" Cleartext-Password := "admin"
+	Timetra-Profile := "administrative",
+	Timetra-Access := 15,
+	Timetra-Default-Action = permit-all

@@ -1,0 +1,35 @@
+name: rad
+
+mgmt:
+  network: radius_cli
+  ipv4-subnet: 192.168.6.0/24
+
+topology:
+  nodes:
+    srl:
+      kind: srl
+      image: ghcr.io/nokia/srlinux
+      mgmt-ipv4: 192.168.6.2
+    sros:
+      kind: vr-sros
+      image: vr-sros:22.10.R5
+      type: sr-1
+      mgmt-ipv4: 192.168.6.3
+      startup-config: sros.partial.txt
+      license: ~/license/license-sros22.txt
+      binds:
+        - ./scripts/sv_mdcli.py:/tftpboot/sv_mdcli.py
+        - ./scripts/sv_classic.py:/tftpboot/sv_classic.py
+        - ./scripts/sv_get.py:/tftpboot/sv_get.py
+    radius:
+      kind: linux
+      image: clab-radius:latest
+      mgmt-ipv4: 192.168.6.4
+      ports:
+        - 1812:1812
+        - 1813:1813
+      binds:
+        - ./logs:/var/log/radius
+
+  links:
+    - endpoints: ["srl:e1-1", "sros:eth1"]
