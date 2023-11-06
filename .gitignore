@@ -4,3 +4,4 @@ clab/logs/radius.log
 clab/logs/radwtmp
 *.bak
 docker-compose.yml
+clab-rad
